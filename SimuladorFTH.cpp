@@ -77,15 +77,15 @@ int main(){
                 cout << hora << " " << minuto << " Sem pacientes aguardando atendimento" << endl;
             }
         }
-        else if(operacao == 'D'){
+        else if(operacao == 'D'){ //pacientes na fila agora
             cout << "V:" << v << " A:" << a << " D:" << d << " B:" << b << " | Atendidos:" << atend << endl;
         }
         else if(operacao == 'Q'){
             cout << "--- RELATORIO FINAL ---" << endl;
-            cout << "Total atendidos:" << atend << endl;
-            cout << "Por prioridade:V=" << tv << " A=" << ta << " D=" << td << " B=" << tb<< endl;
-            cout << "Pico de lotacao:" << pc << endl;
-            cout << "Espera máxima: " << 0 << endl;
+            cout << "Total atendidos:" << atend << endl; //quantos foram atendidos == quantos sairao da fila
+            cout << "Por prioridade:V=" << tv << " A=" << ta << " D=" << td << " B=" << tb<< endl; //pacientes na fila total
+            cout << "Pico de lotacao:" << pc << endl; //o maximo de pessoas que tiverao que ficar esperando
+            cout << "Espera maxima: " << 0 << endl;
             break;
         }
     }
