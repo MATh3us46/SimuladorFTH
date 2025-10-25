@@ -61,7 +61,9 @@ int main(){
                 Prioridade p = emergencia.front();
                 int tempo_chegada = converterParaMinutos(p.hora, p.minuto);
                 int espera = tempo_atual - tempo_chegada;
-                if(espera > espera_maxima) espera_maxima = espera;
+                if(espera > espera_maxima){
+                    espera_maxima = espera;
+                }
 
                 emergencia.pop();
                 atend++;
@@ -73,7 +75,9 @@ int main(){
                 Prioridade p = urgencia.front();
                 int tempo_chegada = converterParaMinutos(p.hora, p.minuto);
                 int espera = tempo_atual - tempo_chegada;
-                if(espera > espera_maxima) espera_maxima = espera;
+                if(espera > espera_maxima){
+                    espera_maxima = espera;
+                }
 
                 urgencia.pop();
                 atend++;
@@ -85,7 +89,9 @@ int main(){
                 Prioridade p = pouco_urgente.front();
                 int tempo_chegada = converterParaMinutos(p.hora, p.minuto);
                 int espera = tempo_atual - tempo_chegada;
-                if(espera > espera_maxima) espera_maxima = espera;
+                if(espera > espera_maxima){
+                    espera_maxima = espera;
+                }
 
                 pouco_urgente.pop();
                 atend++;
@@ -97,7 +103,9 @@ int main(){
                 Prioridade p = nao_urgente.front();
                 int tempo_chegada = converterParaMinutos(p.hora, p.minuto);
                 int espera = tempo_atual - tempo_chegada;
-                if(espera > espera_maxima) espera_maxima = espera;
+                if(espera > espera_maxima){
+                    espera_maxima = espera;
+                }
 
                 nao_urgente.pop();
                 atend++;
