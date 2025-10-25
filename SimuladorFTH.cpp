@@ -7,7 +7,7 @@ struct Prioridade{
     string senha;
     char prioridade;
     int hora;
-    int minito;
+    int minuto;
 };
 
 int main(){
@@ -20,7 +20,7 @@ int main(){
         Prioridade paciente;
         cin >> operacao;
         if(operacao == 'C'){
-            cin >> paciente.senha >> paciente.prioridade >> paciente.hora >> paciente.minito;
+            cin >> paciente.senha >> paciente.prioridade >> paciente.hora >> paciente.minuto;
             if(paciente.prioridade == 'V'){
                 emergencia.push(paciente);
                 v++;
