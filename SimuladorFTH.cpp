@@ -55,7 +55,6 @@ int main(){
             int hora, minuto;
             cin >> hora >> minuto;
             int tempo_atual = converterParaMinutos(hora, minuto);
-            bool atendeu = false;
 
             if(!emergencia.empty()){
                 Prioridade p = emergencia.front();
@@ -69,7 +68,6 @@ int main(){
                 atend++;
                 v--;
                 tal--;
-                atendeu = true;
             }
             else if(!urgencia.empty()){
                 Prioridade p = urgencia.front();
@@ -83,7 +81,6 @@ int main(){
                 atend++;
                 a--;
                 tal--;
-                atendeu = true;
             }
             else if(!pouco_urgente.empty()){
                 Prioridade p = pouco_urgente.front();
@@ -97,7 +94,6 @@ int main(){
                 atend++;
                 d--;
                 tal--;
-                atendeu = true;
             }
             else if(!nao_urgente.empty()){
                 Prioridade p = nao_urgente.front();
@@ -111,7 +107,6 @@ int main(){
                 atend++;
                 b--;
                 tal--;
-                atendeu = true;
             }
             else{
                 cout << hora << " " << minuto << " Sem pacientes aguardando atendimento" << endl;
