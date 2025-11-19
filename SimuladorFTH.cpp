@@ -10,6 +10,13 @@ struct Prioridade{
     int minuto;
 };
 
+void addpaciente(queue<Prioridade>& fila, int& qtd_atual, int& qtd_total, const Prioridade& p){
+    fila.push(p);
+    qtd_atual++;
+    qtd_total++;
+    cout << "Paciente inserido com sucesso" << endl;
+}
+
 int converterParaMinutos(int hora, int minuto){
     return hora * 60 + minuto;
 }
@@ -23,36 +30,44 @@ int main(){
     int espera_maxima = 0;
     while(true){
         Prioridade paciente;
+        cout << "Escolha uma opcao:" << endl;
+        cout << "'C' - Cadastrar entrada de paciente" << endl;
+        cout << "'A' - Atender paciente" << endl;
+        cout << "'D' - Exibir status das filas" << endl;
+        cout << "'Q' - Encerrar e exibir o relatorio final" << endl;
         cin >> operacao;
         if(operacao == 'C'){
+            cout << "Digite a senha, a prioridade('V','A','D','B'), a hora e o minuto" << endl;
             cin >> paciente.senha >> paciente.prioridade >> paciente.hora >> paciente.minuto;
+            bool prioridade_valida = true;
+
             if(paciente.prioridade == 'V'){
-                emergencia.push(paciente);
-                v++;
-                tv++;
+                addpaciente(emergencia, v, tv, paciente);
             }
             else if(paciente.prioridade == 'A'){
-                urgencia.push(paciente);
-                a++;
-                ta++;
+                addpaciente(urgencia, a, ta, paciente);
             }
             else if(paciente.prioridade == 'D'){
-                pouco_urgente.push(paciente);
-                d++;
-                td++;
+                addpaciente(pouco_urgente, d, td, paciente);
             }
             else if(paciente.prioridade == 'B'){
-                nao_urgente.push(paciente);
-                b++;
-                tb++;
+                addpaciente(nao_urgente, b, tb, paciente);
             }
-            tal++;
-            if(tal > pc){ 
-                pc = tal;
+            else{
+                cout << "Prioridade invalida" << endl;
+                prioridade_valida = false;
+            }
+
+            if(prioridade_valida){
+                tal++;
+                if(tal > pc){
+                    pc = tal;
+                }
             }
         }
         else if(operacao == 'A'){
             int hora, minuto;
+            cout << "Informe a hora e o minuto do atendimento:" << endl;
             cin >> hora >> minuto;
             int tempo_atual = converterParaMinutos(hora, minuto);
 
@@ -68,6 +83,7 @@ int main(){
                 atend++;
                 v--;
                 tal--;
+                cout << "Paciente da prioridade V atendido." << endl;
             }
             else if(!urgencia.empty()){
                 Prioridade p = urgencia.front();
@@ -81,6 +97,7 @@ int main(){
                 atend++;
                 a--;
                 tal--;
+                cout << "Paciente da prioridade A atendido." << endl;
             }
             else if(!pouco_urgente.empty()){
                 Prioridade p = pouco_urgente.front();
@@ -94,6 +111,7 @@ int main(){
                 atend++;
                 d--;
                 tal--;
+                cout << "Paciente da prioridade D atendido." << endl;
             }
             else if(!nao_urgente.empty()){
                 Prioridade p = nao_urgente.front();
@@ -107,21 +125,25 @@ int main(){
                 atend++;
                 b--;
                 tal--;
+                cout << "Paciente da prioridade B atendido." << endl;
             }
             else{
-                cout << hora << " " << minuto << " Sem pacientes aguardando atendimento" << endl;
+                cout << "Horario " << hora << ":" << minuto << " - Nao ha pacientes aguardando." << endl;
             }
         }
         else if(operacao == 'D'){ 
-            cout << "V:" << v << " A:" << a << " D:" << d << " B:" << b << " | Atendidos:" << atend << endl;
+            cout << "Fila: V=" << v << " A=" << a << " D=" << d << " B=" << b << " | Atendidos=" << atend << endl;
         }
         else if(operacao == 'Q'){
             cout << "--- RELATORIO FINAL ---" << endl;
-            cout << "Total atendidos:" << atend << endl; 
-            cout << "Por prioridade:V=" << tv << " A=" << ta << " D=" << td << " B=" << tb<< endl; 
-            cout << "Pico de lotacao:" << pc << endl; 
-            cout << "Espera maxima: " << espera_maxima << endl;
+            cout << "Total atendidos: " << atend << endl; 
+            cout << "Por prioridade: V=" << tv << " A=" << ta << " D=" << td << " B=" << tb << endl; 
+            cout << "Pico de lotacao: " << pc << endl; 
+            cout << "Espera máxima: " << espera_maxima << " min" << endl;
             break;
+        }
+        else{
+            cout << "Opcao invalida! Tente novamente." << endl;
         }
     }
 
