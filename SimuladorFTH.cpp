@@ -17,7 +17,7 @@ void addpaciente(queue<Prioridade> &fila, int &qtdatual, int &qtdtotal, Priorida
     cout << "Paciente inserido" << endl;
 }
 
-int converterParaMinutos(int hora, int minuto){
+int converterParaMinutos(int &hora, int &minuto){
     return hora * 60 + minuto;
 }
 
