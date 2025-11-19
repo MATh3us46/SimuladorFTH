@@ -111,11 +111,11 @@ int main(){
         }
 
         else if(operacao == 'Q'){
-            cout << "--- RELATORIO FINAL ---";
+            cout << "--- RELATORIO FINAL ---" << endl;
             cout << "Total Atendidos: " << atend << endl;
             cout << "Por prioridade: V=" << tv << " A=" << ta << " D=" << td << " B=" << tb << endl;
-            cout << "Pico de lotação: " << pc << endl;
-            cout << "Espera máxima: " << espera_maxima << " min" << endl;
+            cout << "Pico de lotacao: " << pc << endl;
+            cout << "Espera maxima: " << espera_maxima << " min" << endl;
             break;
         }
 
