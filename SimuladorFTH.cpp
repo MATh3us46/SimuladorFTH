@@ -62,7 +62,7 @@ int main(){
         cin >> operacao;
 
         if(operacao == 'C'){
-            cout << "Digite: senha, prioridade, hora e minuto" << endl;
+            cout << "Digite: senha, prioridade('V','A','D','B'), hora e minuto" << endl;
             cin >> paciente.senha >> paciente.prioridade >> paciente.hora >> paciente.minuto;
             bool prioridade_valida = true;
 
