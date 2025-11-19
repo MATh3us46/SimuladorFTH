@@ -102,7 +102,7 @@ int main(){
             else if(atenderPaciente(pouco_urgente, d, atend, tal, tempo_atual, espera_maxima)){}
             else if(atenderPaciente(nao_urgente, b, atend, tal, tempo_atual, espera_maxima)){}
             else{
-                cout << hora << " " << minuto << "Sem pacientes aguardando atendimento" << endl;;
+                cout << hora << " " << minuto << " Sem pacientes aguardando atendimento" << endl;;
             }
         }
 
