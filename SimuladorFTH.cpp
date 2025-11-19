@@ -92,7 +92,7 @@ int main(){
 
         else if(operacao == 'A'){
             int hora, minuto;
-            cout << "Informe hora e minuto:\n";
+            cout << "Informe hora e minuto:" << endl;
             cin >> hora >> minuto;
 
             int tempo_atual = converterminutos(hora, minuto);
