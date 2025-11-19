@@ -17,17 +17,17 @@ void addpaciente(queue<Prioridade> &fila, int &qtdatual, int &qtdtotal, Priorida
     cout << "Paciente inserido" << endl;
 }
 
-int converterParaMinutos(int hora, int minuto){
+int converterminutos(int hora, int minuto){
     return hora * 60 + minuto;
 }
 
-bool atenderPaciente(queue<Prioridade> &fila, int &qtd_atual, int &atend, int &tal, int tempo_atual, int &espera_maxima){
+bool atenderpaciente(queue<Prioridade> &fila, int &qtd_atual, int &atend, int &tal, int tempo_atual, int &espera_maxima){
     if(fila.empty()) {
         return false;
     }
 
     Prioridade p = fila.front();
-    int tempo_chegada = converterParaMinutos(p.hora, p.minuto);
+    int tempo_chegada = converterminutos(p.hora, p.minuto);
     int espera = tempo_atual - tempo_chegada;
 
     if(espera > espera_maxima){
@@ -95,12 +95,12 @@ int main(){
             cout << "Informe hora e minuto:\n";
             cin >> hora >> minuto;
 
-            int tempo_atual = converterParaMinutos(hora, minuto);
+            int tempo_atual = converterminutos(hora, minuto);
 
-            if(atenderPaciente(emergencia, v, atend, tal, tempo_atual, espera_maxima)){}
-            else if(atenderPaciente(urgencia, a, atend, tal, tempo_atual, espera_maxima)){}
-            else if(atenderPaciente(pouco_urgente, d, atend, tal, tempo_atual, espera_maxima)){}
-            else if(atenderPaciente(nao_urgente, b, atend, tal, tempo_atual, espera_maxima)){}
+            if(atenderpaciente(emergencia, v, atend, tal, tempo_atual, espera_maxima)){}
+            else if(atenderpaciente(urgencia, a, atend, tal, tempo_atual, espera_maxima)){}
+            else if(atenderpaciente(pouco_urgente, d, atend, tal, tempo_atual, espera_maxima)){}
+            else if(atenderpaciente(nao_urgente, b, atend, tal, tempo_atual, espera_maxima)){}
             else{
                 cout << hora << " " << minuto << " Sem pacientes aguardando atendimento" << endl;;
             }
