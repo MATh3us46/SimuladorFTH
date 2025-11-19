@@ -10,15 +10,15 @@ struct Prioridade{
     int minuto;
 };
 
-int converterParaMinutos(int hora, int minuto){
-    return hora * 60 + minuto;
+void addpaciente(queue<Prioridade> &fila, int &qtdatual, int &qtdtotal, Prioridade &p){
+    fila.push(p);
+    qtdatual++;
+    qtdtotal++;
+    cout << "Paciente inserido" << endl;
 }
 
-void addpaciente(queue<Prioridade> &fila, int &qtd_atual, int &qtd_total, const Prioridade &p){
-    fila.push(p);
-    qtd_atual++;
-    qtd_total++;
-    cout << "Paciente inserido com sucesso" << endl;
+int converterParaMinutos(int hora, int minuto){
+    return hora * 60 + minuto;
 }
 
 bool atenderPaciente(queue<Prioridade> &fila, int &qtd_atual, int &atend, int &tal, int tempo_atual, int &espera_maxima){
@@ -47,18 +47,22 @@ bool atenderPaciente(queue<Prioridade> &fila, int &qtd_atual, int &atend, int &t
 int main(){
     queue<Prioridade> emergencia, urgencia, pouco_urgente, nao_urgente;
     char operacao;
-    int v = 0, a = 0, d = 0, b = 0, atend = 0;
+    int v = 0, a = 0, d = 0, b = 0;
     int tv = 0, ta = 0, td = 0, tb = 0;
-    int tal = 0, pc = 0;
+    int tal = 0, pc = 0, atend = 0;
     int espera_maxima = 0;
 
     while(true){
         Prioridade paciente;
-        cout << "Escolha uma opcao:\nC - Cadastrar\nA - Atender\nD - Status\nQ - Relatório\n";
+        cout << "Escolha uma opcao:" << endl;
+        cout << "'C' - Cadastrar entrada de paciente" << endl;
+        cout << "'A' - Atender paciente" << endl;
+        cout << "'D' - Exibir status das filas" << endl;
+        cout << "'Q' - Encerrar e exibir o relatorio final" << endl;
         cin >> operacao;
 
         if(operacao == 'C'){
-            cout << "Digite: senha prioridade hora minuto\n";
+            cout << "Digite: senha, prioridade, hora e minuto" << endl;
             cin >> paciente.senha >> paciente.prioridade >> paciente.hora >> paciente.minuto;
             bool prioridade_valida = true;
 
